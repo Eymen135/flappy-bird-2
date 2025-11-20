@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Flappy Bird Sarı Kuş</title>
+<title>Flappy Bird Sar� Ku�</title>
 <style>
   body {
     margin: 0;
@@ -37,7 +37,7 @@
 <canvas id="game" width="400" height="600"></canvas>
 <video id="ad-video" autoplay muted loop>
   <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-  Tarayıcınız video etiketini desteklemiyor.
+  Taray�c�n�z video etiketini desteklemiyor.
 </video>
 <script>
 const canvas = document.getElementById('game');
@@ -60,133 +60,12 @@ function drawBackground(){
 }
 
 function drawBird(){
-  ctx.fillStyle = 'yellow'; // Sarı kuş
+  ctx.fillStyle = 'yellow'; // Sar� ku�
   ctx.fillRect(bird.x,bird.y,bird.w,bird.h);
 }
 
 function drawPipes(){
-  ctx.fillStyle='green'; // Yeşil borular
-  pipes.forEach(pipe=>{
-    ctx.fillRect(pipe.x,0,pipe.w,pipe.top);
-    ctx.fillRect(pipe.x,pipe.bottom,pipe.w,canvas.height-pipe.bottom);
-    pipe.x-=2;
-  });
-}
-
-function drawScore(){ 
-  ctx.fillStyle='white'; 
-  ctx.font='28px Arial'; 
-  ctx.fillText(score,20,40); 
-}
-
-function checkCollision(pipe){
-  if(bird.x+bird.w>pipe.x && bird.x<pipe.x+pipe.w && (bird.y<pipe.top || bird.y+bird.h>pipe.bottom)) return true;
-  return false;
-}
-
-function update(){
-  bird.velocity+=bird.gravity;
-  bird.y+=bird.velocity;
-  if(bird.y+bird.h>=canvas.height || bird.y<=0) gameOver();
-  if(frame%120===0) createPipe();
-  pipes.forEach(pipe=>{
-    if(checkCollision(pipe)) gameOver();
-    if(pipe.x+pipe.w===bird.x) score++;
-  });
-}
-
-function gameOver(){
-  alert('Oyun bitti! Skor: '+score);
-  document.location.reload();
-}
-
-function gameLoop(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  drawBackground();
-  drawBird();
-  drawPipes();
-  drawScore();
-  frame++;
-  update();
-  requestAnimationFrame(gameLoop);
-}
-
-window.addEventListener('keydown',()=>{ bird.velocity=bird.lift; });
-window.addEventListener('click',()=>{ bird.velocity=bird.lift; });
-window.addEventListener('touchstart',()=>{ bird.velocity=bird.lift; });
-
-gameLoop();
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Flappy Bird Sarı Kuş</title>
-<style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    background: #70c5ce; /* Mavi arkaplan */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-    font-family: Arial, sans-serif;
-  }
-  canvas {
-    border: 2px solid #fff;
-    touch-action: none;
-    display: block;
-  }
-  #ad-video {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 200px;
-    height: 120px;
-    border-radius: 8px;
-    z-index: 1000;
-    background: black;
-  }
-</style>
-</head>
-<body>
-<canvas id="game" width="400" height="600"></canvas>
-<video id="ad-video" autoplay muted loop>
-  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-  Tarayıcınız video etiketini desteklemiyor.
-</video>
-<script>
-const canvas = document.getElementById('game');
-const ctx = canvas.getContext('2d');
-
-let bird = { x:60, y:200, w:40, h:30, gravity:0.35, lift:-7, velocity:0 };
-let pipes = [];
-let frame = 0;
-let score = 0;
-
-function createPipe(){
-  const gap=140;
-  const topHeight=Math.random()*(canvas.height-gap-100)+40;
-  pipes.push({ x:canvas.width, top:topHeight, bottom:topHeight+gap, w:60 });
-}
-
-function drawBackground(){
-  ctx.fillStyle = '#70c5ce'; // Mavi arkaplan
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-}
-
-function drawBird(){
-  ctx.fillStyle = 'yellow'; // Sarı kuş
-  ctx.fillRect(bird.x,bird.y,bird.w,bird.h);
-}
-
-function drawPipes(){
-  ctx.fillStyle='green'; // Yeşil borular
+  ctx.fillStyle='green'; // Ye�il borular
   pipes.forEach(pipe=>{
     ctx.fillRect(pipe.x,0,pipe.w,pipe.top);
     ctx.fillRect(pipe.x,pipe.bottom,pipe.w,canvas.height-pipe.bottom);
